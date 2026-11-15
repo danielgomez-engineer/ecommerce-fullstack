@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -45,6 +46,7 @@ public class ProductController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Create a new product")
     public ResponseEntity<GeneralResponse<ProductResponse>> create(@Valid @RequestBody ProductRequest request) {
         ProductResponse created = productService.create(request);
@@ -53,6 +55,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Update an existing product")
     public ResponseEntity<GeneralResponse<ProductResponse>> update(
             @PathVariable Long id,
@@ -61,6 +64,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Delete a product")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         productService.delete(id);

@@ -39,6 +39,9 @@ class ProductControllerTest {
     @MockitoBean
     private JpaMetamodelMappingContext jpaMetamodelMappingContext;
 
+    @MockitoBean
+    private com.danieldev.ecommerce.security.JwtService jwtService;
+
     @Test
     void getAll_returns200AndPageResponse() throws Exception {
         ProductResponse item = ProductResponse.builder().id(1L).name("Keyboard").price(new BigDecimal("89.50")).build();
