@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addToCart } from '../cart/cartSlice';
 import { clearSelectedProduct, fetchProductById } from './productsSlice';
 
 export const ProductDetailPage = () => {
@@ -68,6 +69,11 @@ export const ProductDetailPage = () => {
 
   const inStock = product.stock > 0;
 
+  const handleAdd = () => {
+    dispatch(addToCart({ product, quantity }));
+    setAdded(true);
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
       <Box>
@@ -122,7 +128,7 @@ export const ProductDetailPage = () => {
               slotProps={{ htmlInput: { min: 1, max: product.stock, step: 1 } }}
               sx={{ width: 120 }}
             />
-            <Button variant="contained" size="large" disabled={!inStock} onClick={() => setAdded(true)}>
+            <Button variant="contained" size="large" disabled={!inStock} onClick={handleAdd}>
               Add to Cart
             </Button>
           </Box>

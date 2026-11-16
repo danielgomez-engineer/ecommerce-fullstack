@@ -83,6 +83,15 @@ export interface Order {
   items: OrderItem[];
 }
 
+export interface OrderItemRequest {
+  productId: number;
+  quantity: number;
+}
+
+export interface OrderRequest {
+  items: OrderItemRequest[];
+}
+
 export interface ProductRequest {
   name: string;
   description?: string;

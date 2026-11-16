@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -7,6 +7,8 @@ import { logout } from '../features/auth/authSlice';
 
 export const NavBar = () => {
   const { user } = useAppSelector((state) => state.auth);
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -38,7 +40,11 @@ export const NavBar = () => {
             color="inherit"
             component={RouterLink}
             to="/cart"
-            startIcon={<ShoppingCartIcon />}
+            startIcon={
+              <Badge badgeContent={totalItems} color="secondary">
+                <ShoppingCartIcon />
+              </Badge>
+            }
           >
             Cart
           </Button>

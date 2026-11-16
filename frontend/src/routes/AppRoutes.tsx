@@ -5,7 +5,8 @@ import { LoginPage } from '../features/auth/LoginPage';
 import { RegisterPage } from '../features/auth/RegisterPage';
 import { ProductDetailPage } from '../features/products/ProductDetailPage';
 import { ProductsPage } from '../features/products/ProductsPage';
-import { Typography } from '@mui/material';
+import { CartPage } from '../features/cart/CartPage';
+import { OrdersPage } from '../features/orders/OrdersPage';
 
 export const AppRoutes = () => {
   return (
@@ -16,10 +17,10 @@ export const AppRoutes = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<ProductDetailPage />} />
-        <Route path="/cart" element={<Typography variant="h5">Shopping Cart (Phase 8)</Typography>} />
+        <Route path="/cart" element={<CartPage />} />
 
         <Route element={<ProtectedRoute />}>
-          <Route path="/orders" element={<Typography variant="h5">Order History (Phase 8)</Typography>} />
+          <Route path="/orders" element={<OrdersPage />} />
         </Route>
       </Route>
     </Routes>

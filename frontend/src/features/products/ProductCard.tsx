@@ -9,6 +9,8 @@ import {
   Typography,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { addToCart } from '../cart/cartSlice';
 import type { Product } from '../../types';
 
 interface ProductCardProps {
@@ -20,6 +22,7 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, isAdmin = false, onEdit, onDelete }: ProductCardProps) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const inStock = product.stock > 0;
 
   return (
@@ -61,9 +64,19 @@ export const ProductCard = ({ product, isAdmin = false, onEdit, onDelete }: Prod
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
-        <Button size="small" variant="contained" onClick={() => navigate(`/products/${product.id}`)}>
-          Details
-        </Button>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <Button size="small" variant="contained" onClick={() => navigate(`/products/${product.id}`)}>
+            Details
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            disabled={!inStock || isAdmin}
+            onClick={() => dispatch(addToCart({ product, quantity: 1 }))}
+          >
+            Add to Cart
+          </Button>
+        </Box>
         {isAdmin && (
           <Box sx={{ display: 'flex', gap: 0.5 }}>
             <Button size="small" onClick={() => onEdit?.(product)}>
