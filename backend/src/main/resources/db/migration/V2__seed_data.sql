@@ -1,7 +1,7 @@
--- Demo Users (password: "secret")
+-- Demo Users (password: "password")
 INSERT INTO users (user_type, email, password, full_name, role, phone, address) VALUES
-                                                                                    ('ADMIN', 'admin@demo.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', 'Admin User', 'ADMIN', NULL, NULL),
-                                                                                    ('CUSTOMER', 'customer@demo.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', 'Jane Customer', 'CUSTOMER', '+57 3001234567', '123 Main St');
+                                                                                    ('ADMIN', 'admin@demo.com', '$2a$10$YqqCsNKNd9nSWlp4h0SQb.fJDe4YeudrEYuCWRPOdZdgSsTfwhrSq', 'Admin User', 'ADMIN', NULL, NULL),
+                                                                                    ('CUSTOMER', 'customer@demo.com', '$2a$10$YqqCsNKNd9nSWlp4h0SQb.fJDe4YeudrEYuCWRPOdZdgSsTfwhrSq', 'Jane Customer', 'CUSTOMER', '+57 3001234567', '123 Main St');
 
 -- Categories
 INSERT INTO categories (name) VALUES
