@@ -3,6 +3,8 @@ import { Layout } from '../components/Layout';
 import { ProtectedRoute } from '../components/ProtectedRoute';
 import { LoginPage } from '../features/auth/LoginPage';
 import { RegisterPage } from '../features/auth/RegisterPage';
+import { ProductDetailPage } from '../features/products/ProductDetailPage';
+import { ProductsPage } from '../features/products/ProductsPage';
 import { Typography } from '@mui/material';
 
 export const AppRoutes = () => {
@@ -12,7 +14,8 @@ export const AppRoutes = () => {
         <Route path="/" element={<Navigate to="/products" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/products" element={<Typography variant="h5">Products Catalog (Phase 7)</Typography>} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:id" element={<ProductDetailPage />} />
         <Route path="/cart" element={<Typography variant="h5">Shopping Cart (Phase 8)</Typography>} />
 
         <Route element={<ProtectedRoute />}>
